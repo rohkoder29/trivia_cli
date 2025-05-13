@@ -1,0 +1,5 @@
+from OpenAI prompt:
+
+core enhancements:
+Replay Value: Question Rotation
+    Track which questions a user has seen and prefer unseen ones until all are exhausted.

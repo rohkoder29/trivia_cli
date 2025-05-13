@@ -1,0 +1,500 @@
+[
+    {
+        "category": "history",
+        "question": "What year did the American Revolution start?",
+        "answers": ["1775", "1776", "1777", "1778"],
+        "correct": "1775"
+    },
+    {
+        "category": "history",
+        "question": "When did World War I begin?",
+        "answers": ["1914", "1915", "1916", "1917"],
+        "correct": "1914"
+    },
+    {
+        "category": "history",
+        "question": "Who was the first president of the United States?",
+        "answers": ["George Washington", "Thomas Jefferson", "Abraham Lincoln", "John Adams"],
+        "correct": "George Washington"
+    },
+    {
+        "category": "history",
+        "question": "In which year did the Titanic sink?",
+        "answers": ["1912", "1905", "1920", "1910"],
+        "correct": "1912"
+    },
+    {
+        "category": "history",
+        "question": "Which year did the Berlin Wall fall?",
+        "answers": ["1989", "1990", "1988", "1991"],
+        "correct": "1989"
+    },
+    {
+        "category": "history",
+        "question": "Who was the first emperor of China?",
+        "answers": ["Qin Shi Huang", "Emperor Wu", "Liu Bang", "Tang Taizong"],
+        "correct": "Qin Shi Huang"
+    },
+    {
+        "category": "history",
+        "question": "Which country did Napoleon Bonaparte rule?",
+        "answers": ["France", "Italy", "Spain", "Germany"],
+        "correct": "France"
+    },
+    {
+        "category": "history",
+        "question": "When was the Magna Carta signed?",
+        "answers": ["1215", "1225", "1300", "1100"],
+        "correct": "1215"
+    },
+    {
+        "category": "history",
+        "question": "Which event sparked the start of World War II?",
+        "answers": ["The invasion of Poland", "The assassination of Archduke Ferdinand", "The bombing of Pearl Harbor", "The signing of the Treaty of Versailles"],
+        "correct": "The invasion of Poland"
+    },
+    {
+        "category": "history",
+        "question": "Who was the leader of the Soviet Union during World War II?",
+        "answers": ["Joseph Stalin", "Vladimir Lenin", "Nikita Khrushchev", "Leon Trotsky"],
+        "correct": "Joseph Stalin"
+    },
+    {
+        "category": "history",
+        "question": "Which empire was ruled by Julius Caesar?",
+        "answers": ["Roman Empire", "Ottoman Empire", "Byzantine Empire", "British Empire"],
+        "correct": "Roman Empire"
+    },
+    {
+        "category": "history",
+        "question": "When did the United States declare independence?",
+        "answers": ["1776", "1783", "1800", "1812"],
+        "correct": "1776"
+    },
+    {
+        "category": "history",
+        "question": "Which war was fought between the North and South in the United States?",
+        "answers": ["American Civil War", "World War I", "World War II", "War of 1812"],
+        "correct": "American Civil War"
+    },
+    {
+        "category": "history",
+        "question": "Who was the last tsar of Russia?",
+        "answers": ["Nicholas II", "Alexander III", "Peter the Great", "Ivan IV"],
+        "correct": "Nicholas II"
+    },
+    {
+        "category": "history",
+        "question": "What year did the Cold War end?",
+        "answers": ["1991", "1989", "1990", "1985"],
+        "correct": "1991"
+    },
+    {
+        "category": "history",
+        "question": "Who was the leader of Nazi Germany during World War II?",
+        "answers": ["Adolf Hitler", "Joseph Stalin", "Benito Mussolini", "Franklin D. Roosevelt"],
+        "correct": "Adolf Hitler"
+    },
+    {
+        "category": "history",
+        "question": "When was the first manned moon landing?",
+        "answers": ["1969", "1971", "1965", "1959"],
+        "correct": "1969"
+    },
+    {
+        "category": "history",
+        "question": "Which was the first permanent British colony in North America?",
+        "answers": ["Jamestown", "Plymouth", "New Amsterdam", "Roanoke"],
+        "correct": "Jamestown"
+    },
+    {
+        "category": "history",
+        "question": "Which conflict was known as the 'War to End All Wars'?",
+        "answers": ["World War I", "World War II", "The Korean War", "The Civil War"],
+        "correct": "World War I"
+    },
+    {
+        "category": "history",
+        "question": "Who was the famous leader of the Mongol Empire?",
+        "answers": ["Genghis Khan", "Kublai Khan", "Tamerlane", "Alexander the Great"],
+        "correct": "Genghis Khan"
+    },
+    {
+        "category": "history",
+        "question": "In which year did the first manned spaceflight occur?",
+        "answers": ["1961", "1962", "1965", "1960"],
+        "correct": "1961"
+    },
+    {
+        "category": "history",
+        "question": "Which country was responsible for the sinking of the Lusitania?",
+        "answers": ["Germany", "Great Britain", "Italy", "France"],
+        "correct": "Germany"
+    },
+    {
+        "category": "history",
+        "question": "What was the primary cause of the French Revolution?",
+        "answers": ["Social inequality", "Taxation", "Lack of food", "All of the above"],
+        "correct": "All of the above"
+    },
+    {
+        "category": "history",
+        "question": "Who was the first woman to fly solo across the Atlantic Ocean?",
+        "answers": ["Amelia Earhart", "Bessie Coleman", "Sally Ride", "Harriet Quimby"],
+        "correct": "Amelia Earhart"
+    },
+    {
+        "category": "history",
+        "question": "What year did the U.S. Civil War end?",
+        "answers": ["1865", "1861", "1850", "1870"],
+        "correct": "1865"
+    },
+    {
+        "category": "history",
+        "question": "Where was the first modern Olympic Games held?",
+        "answers": ["Athens", "Paris", "London", "Rome"],
+        "correct": "Athens"
+    },
+    {
+        "category": "geography",
+        "question": "What is the capital of France?",
+        "answers": ["London", "Paris", "Berlin", "Madrid"],
+        "correct": "Paris"
+    },
+    {
+        "category": "geography",
+        "question": "Which country has the longest coastline?",
+        "answers": ["Canada", "Russia", "United States", "Australia"],
+        "correct": "Canada"
+    },
+    {
+        "category": "geography",
+        "question": "Which river is the longest in the world?",
+        "answers": ["Amazon", "Nile", "Yangtze", "Mississippi"],
+        "correct": "Nile"
+    },
+    {
+        "category": "geography",
+        "question": "Which continent is the Sahara Desert located on?",
+        "answers": ["Asia", "Africa", "North America", "Australia"],
+        "correct": "Africa"
+    },
+    {
+        "category": "geography",
+        "question": "What is the capital of Japan?",
+        "answers": ["Tokyo", "Kyoto", "Osaka", "Hiroshima"],
+        "correct": "Tokyo"
+    },
+    {
+        "category": "geography",
+        "question": "What is the smallest country in the world?",
+        "answers": ["Vatican City", "Monaco", "San Marino", "Liechtenstein"],
+        "correct": "Vatican City"
+    },
+    {
+        "category": "geography",
+        "question": "What is the tallest mountain in the world?",
+        "answers": ["Mount Everest", "K2", "Kangchenjunga", "Mount Kilimanjaro"],
+        "correct": "Mount Everest"
+    },
+    {
+        "category": "geography",
+        "question": "Which ocean is the largest in the world?",
+        "answers": ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean"],
+        "correct": "Pacific Ocean"
+    },
+    {
+        "category": "geography",
+        "question": "What is the longest mountain range in the world?",
+        "answers": ["Andes", "Rocky Mountains", "Himalayas", "Alps"],
+        "correct": "Andes"
+    },
+    {
+        "category": "geography",
+        "question": "Which country is known as the Land of the Rising Sun?",
+        "answers": ["Japan", "China", "South Korea", "Thailand"],
+        "correct": "Japan"
+    },
+    {
+        "category": "geography",
+        "question": "Which is the longest river in the United States?",
+        "answers": ["Missouri River", "Mississippi River", "Colorado River", "Ohio River"],
+        "correct": "Missouri River"
+    },
+    {
+        "category": "geography",
+        "question": "What is the largest desert in the world?",
+        "answers": ["Sahara Desert", "Gobi Desert", "Arabian Desert", "Karakum Desert"],
+        "correct": "Sahara Desert"
+    },
+    {
+        "category": "geography",
+        "question": "Which city is known as the Big Apple?",
+        "answers": ["New York City", "Los Angeles", "Chicago", "San Francisco"],
+        "correct": "New York City"
+    },
+    {
+        "category": "geography",
+        "question": "Which country is the largest by area?",
+        "answers": ["Russia", "Canada", "China", "United States"],
+        "correct": "Russia"
+    },
+    {
+        "category": "geography",
+        "question": "Which country has the most islands?",
+        "answers": ["Sweden", "Finland", "Canada", "Indonesia"],
+        "correct": "Sweden"
+    },
+    {
+        "category": "geography",
+        "question": "What is the largest continent?",
+        "answers": ["Asia", "Africa", "North America", "Europe"],
+        "correct": "Asia"
+    },
+    {
+        "category": "geography",
+        "question": "Which is the most populous country in the world?",
+        "answers": ["China", "India", "United States", "Indonesia"],
+        "correct": "China"
+    },
+    {
+        "category": "geography",
+        "question": "What is the smallest continent by land area?",
+        "answers": ["Australia", "Europe", "Antarctica", "South America"],
+        "correct": "Australia"
+    },
+    {
+        "category": "sports",
+        "question": "Who holds the record for most goals in World Cup history?",
+        "answers": ["Marta", "Pelé", "Miroslav Klose", "Cristiano Ronaldo"],
+        "correct": "Miroslav Klose"
+    },
+    {
+        "category": "sports",
+        "question": "Which country won the first FIFA World Cup?",
+        "answers": ["Italy", "Brazil", "Argentina", "Uruguay"],
+        "correct": "Uruguay"
+    },
+    {
+        "category": "sports",
+        "question": "In which year were the first modern Olympic Games held?",
+        "answers": ["1896", "1900", "1912", "1924"],
+        "correct": "1896"
+    },
+    {
+        "category": "sports",
+        "question": "What is the highest scoring game in NBA history?",
+        "answers": ["1960", "1984", "1992", "2006"],
+        "correct": "1984"
+    },
+    {
+        "category": "sports",
+        "question": "Which sport is known as 'America's Pastime'?",
+        "answers": ["Baseball", "Football", "Basketball", "Hockey"],
+        "correct": "Baseball"
+    },
+    {
+        "category": "sports",
+        "question": "Who is known as the fastest man in the world?",
+        "answers": ["Usain Bolt", "Carl Lewis", "Michael Johnson", "Tyson Gay"],
+        "correct": "Usain Bolt"
+    },
+    {
+        "category": "sports",
+        "question": "Which country has won the most Olympic gold medals?",
+        "answers": ["United States", "Russia", "Germany", "China"],
+        "correct": "United States"
+    },
+    {
+        "category": "sports",
+        "question": "What is the most-watched sporting event in the world?",
+        "answers": ["The Super Bowl", "The FIFA World Cup", "The Olympics", "The Champions League Final"],
+        "correct": "The FIFA World Cup"
+    },
+    {
+        "category": "sports",
+        "question": "Who holds the record for most home runs in MLB history?",
+        "answers": ["Babe Ruth", "Barry Bonds", "Hank Aaron", "Ken Griffey Jr."],
+        "correct": "Barry Bonds"
+    },
+    {
+        "category": "sports",
+        "question": "Which country hosted the 2016 Summer Olympics?",
+        "answers": ["Brazil", "China", "United Kingdom", "Australia"],
+        "correct": "Brazil"
+    },
+    {
+        "category": "sports",
+        "question": "In which sport would you perform a slam dunk?",
+        "answers": ["Basketball", "Volleyball", "Baseball", "Tennis"],
+        "correct": "Basketball"
+    },
+    {
+        "category": "sports",
+        "question": "Which country is known for the sport of cricket?",
+        "answers": ["India", "Australia", "England", "Pakistan"],
+        "correct": "England"
+    },
+    {
+        "category": "sports",
+        "question": "What year did the first modern Winter Olympics take place?",
+        "answers": ["1924", "1928", "1932", "1936"],
+        "correct": "1924"
+    },
+    {
+        "category": "sports",
+        "question": "Who was the first African American to play Major League Baseball?",
+        "answers": ["Jackie Robinson", "Satchel Paige", "Willie Mays", "Reggie Jackson"],
+        "correct": "Jackie Robinson"
+    },
+    {
+        "category": "sports",
+        "question": "In what year did the first Super Bowl take place?",
+        "answers": ["1967", "1965", "1970", "1958"],
+        "correct": "1967"
+    },
+    {
+        "category": "sports",
+        "question": "What is the name of the world's most famous tennis tournament?",
+        "answers": ["Wimbledon", "US Open", "Australian Open", "French Open"],
+        "correct": "Wimbledon"
+    },
+    {
+        "category": "sports",
+        "question": "What is the national sport of Canada?",
+        "answers": ["Ice Hockey", "Lacrosse", "Football", "Baseball"],
+        "correct": "Ice Hockey"
+    },
+    {
+        "category": "sports",
+        "question": "What sport is associated with the Ryder Cup?",
+        "answers": ["Golf", "Tennis", "Football", "Baseball"],
+        "correct": "Golf"
+    },
+    {
+        "category": "sports",
+        "question": "Who has won the most NBA championships?",
+        "answers": ["Bill Russell", "Michael Jordan", "LeBron James", "Kareem Abdul-Jabbar"],
+        "correct": "Bill Russell"
+    },
+    {
+        "category": "sports",
+        "question": "Who is the all-time top scorer in the NBA?",
+        "answers": ["LeBron James", "Kareem Abdul-Jabbar", "Michael Jordan", "Karl Malone"],
+        "correct": "LeBron James"
+    },
+    {
+        "category": "sports",
+        "question": "Which NFL team has won the most Super Bowls?",
+        "answers": ["Pittsburgh Steelers", "New England Patriots", "Dallas Cowboys", "San Francisco 49ers"],
+        "correct": "Pittsburgh Steelers"
+    },
+    {
+        "category": "sports",
+        "question": "Which country has the most Formula 1 World Championships?",
+        "answers": ["Germany", "United Kingdom", "Brazil", "Italy"],
+        "correct": "United Kingdom"
+    },
+    {
+        "category": "science",
+        "question": "What is the chemical symbol for water?",
+        "answers": ["O2", "H2O", "CO2", "H2"],
+        "correct": "H2O"
+    },
+    {
+        "category": "science",
+        "question": "Who proposed the theory of evolution?",
+        "answers": ["Albert Einstein", "Isaac Newton", "Charles Darwin", "Galileo Galilei"],
+        "correct": "Charles Darwin"
+    },
+    {
+        "category": "science",
+        "question": "What is the most common gas in Earth's atmosphere?",
+        "answers": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+        "correct": "Nitrogen"
+    },
+    {
+        "category": "science",
+        "question": "What is the center of an atom called?",
+        "answers": ["Nucleus", "Electron", "Proton", "Neutron"],
+        "correct": "Nucleus"
+    },
+    {
+        "category": "science",
+        "question": "What planet is known as the Red Planet?",
+        "answers": ["Mars", "Venus", "Earth", "Saturn"],
+        "correct": "Mars"
+    },
+    {
+        "category": "science",
+        "question": "What is the chemical formula for methane?",
+        "answers": ["CH4", "CO2", "H2O", "C6H12O6"],
+        "correct": "CH4"
+    },
+    {
+        "category": "science",
+        "question": "What is the hardest known natural material?",
+        "answers": ["Diamond", "Gold", "Iron", "Platinum"],
+        "correct": "Diamond"
+    },
+    {
+        "category": "science",
+        "question": "Which element has the atomic number 1?",
+        "answers": ["Hydrogen", "Helium", "Oxygen", "Carbon"],
+        "correct": "Hydrogen"
+    },
+    {
+        "category": "science",
+        "question": "What force pulls objects toward the center of the Earth?",
+        "answers": ["Gravity", "Magnetism", "Friction", "Centrifugal Force"],
+        "correct": "Gravity"
+    },
+    {
+        "category": "science",
+        "question": "What is the most abundant element in the universe?",
+        "answers": ["Hydrogen", "Oxygen", "Carbon", "Helium"],
+        "correct": "Hydrogen"
+    },
+    {
+        "category": "science",
+        "question": "What is the boiling point of water in Celsius?",
+        "answers": ["100°C", "90°C", "80°C", "120°C"],
+        "correct": "100°C"
+    },
+    {
+        "category": "science",
+        "question": "What is the chemical symbol for gold?",
+        "answers": ["Au", "Ag", "Pb", "Fe"],
+        "correct": "Au"
+    },
+    {
+        "category": "science",
+        "question": "What type of energy is stored in food?",
+        "answers": ["Chemical energy", "Kinetic energy", "Potential energy", "Thermal energy"],
+        "correct": "Chemical energy"
+    },
+    {
+        "category": "science",
+        "question": "What is the study of living organisms called?",
+        "answers": ["Biology", "Chemistry", "Physics", "Astronomy"],
+        "correct": "Biology"
+    },
+    {
+        "category": "science",
+        "question": "What part of the cell contains the genetic material?",
+        "answers": ["Nucleus", "Mitochondria", "Ribosomes", "Endoplasmic Reticulum"],
+        "correct": "Nucleus"
+    },
+    {
+        "category": "science",
+        "question": "What is the freezing point of water in Celsius?",
+        "answers": ["0°C", "32°C", "-10°C", "10°C"],
+        "correct": "0°C"
+    },
+    {
+        "category": "science",
+        "question": "Which gas do plants absorb from the atmosphere during photosynthesis?",
+        "answers": ["Carbon dioxide", "Oxygen", "Nitrogen", "Methane"],
+        "correct": "Carbon dioxide"
+    }
+]
