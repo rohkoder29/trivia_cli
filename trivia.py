@@ -5,13 +5,12 @@ from rich.console import Console
 from rich.prompt import Prompt
 from rich.table import Table
 from rich.panel import Panel
-from rich import box
 
 console = Console()
 
 def load_questions(filename):
     try:
-        with open(filename, 'r') as f:
+        with open(filename, 'r', encoding='utf-8', newline='') as f:
             questions = json.load(f)
             return questions
     except FileNotFoundError:
@@ -23,45 +22,63 @@ def load_questions(filename):
 
 def load_high_scores(filename):
     try:
-        with open(filename, 'r') as f:
+        with open(filename, 'r', encoding='utf-8', newline='') as f:
             reader = csv.reader(f)
-            return list(reader)
+            high_scores = list(reader)
+
+            # Sort by score descending, preserve insertion order for ties
+            sorted_scores = sorted(high_scores, key=lambda x: -int(x[1]))
+
+            # Keep only top 5
+            top_five = sorted_scores[:5]
+
+        # Optional: clean up the file to reflect valid state
+        with open(filename, 'w', encoding='utf-8', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerows(top_five)
+
+        return top_five
+
     except FileNotFoundError:
-        with open(filename, 'w') as f:
+        with open(filename, 'w', encoding='utf-8') as f:
             pass
         return []
-    except csv.Error:
-        console.print("[bold red]Error: Invalid high scores file format.[/bold red]")
+
+    except (csv.Error, ValueError, IndexError):
+        print("Error: Invalid high scores file format.")
         return []
+
 
 def get_category_questions(questions, category):
     return [q for q in questions if q['category'] == category]
 
-def ask_question(question):
-    console.print(Panel.fit(f"[bold yellow]{question['question']}[/bold yellow]", title="Question", style="cyan"))
+def ask_question(question, index, total):
+    console.rule(f"[bold blue]Question {index} of {total}")
+    console.print(Panel.fit(question['question'], style="bold"))
+
     answers = question['answers']
     random.shuffle(answers)
 
-    for i, answer in enumerate(answers):
-        console.print(f"[bold blue]{i+1}.[/bold blue] {answer}")
+    for i, answer in enumerate(answers, 1):
+        console.print(f"[cyan]{i}.[/cyan] {answer}")
 
-    while True:
-        user_input = Prompt.ask("Enter the number of your answer")
-        try:
-            user_answer = int(user_input) - 1
-            if 0 <= user_answer < len(answers):
-                break
-            else:
-                console.print("[red]Invalid answer number. Try again.[/red]")
-        except ValueError:
-            console.print("[red]Invalid input. Please enter a number.[/red]")
+    user_input = console.input("\n[bold]Enter the number of your answer:[/bold] ")
+    try:
+        choice = int(user_input) - 1
+        if choice < 0 or choice >= len(answers):
+            console.print("[red]Invalid answer. Please try again.[/red]")
+            return ask_question(question, index, total)
+    except ValueError:
+        console.print("[red]Invalid input. Please enter a number.[/red]")
+        return ask_question(question, index, total)
 
-    correct = answers[user_answer] == question['correct']
+    correct = answers[choice] == question['correct']
     if correct:
-        console.print("[bold green]✅ Correct![/bold green]")
+        console.print("[bold green]✔ Correct![/bold green]\n")
     else:
-        console.print(f"[bold red]❌ Sorry, the correct answer is: [bold yellow]{question['correct']}[/bold yellow][/bold red]")
+        console.print(f"[bold red]✘ Sorry, the correct answer was: [yellow]{question['correct']}[/yellow][/bold red]\n")
     return correct
+
 
 def play_round(questions, category):
     category_questions = get_category_questions(questions, category)
@@ -71,9 +88,8 @@ def play_round(questions, category):
     selected_questions = random.sample(category_questions, min(5, len(category_questions)))
     score = 0
     correct_answers = 0
-    for index, question in enumerate(selected_questions, 1):
-        console.print(f"\n[bold underline]Question {index}[/bold underline]")
-        if ask_question(question):
+    for idx, question in enumerate(selected_questions, 1):
+        if ask_question(question, idx, len(selected_questions)):
             correct_answers += 1
             score += 3
     console.print(f"\n[bold green]✔ You got {correct_answers} out of {len(selected_questions)} correct![/bold green]")
@@ -84,29 +100,39 @@ def view_stats(high_scores):
     if not high_scores:
         console.print("[yellow]No high scores available.[/yellow]")
         return
-    table = Table(title="🏆 High Scores", box=box.ROUNDED, show_lines=True)
-    table.add_column("Rank", justify="right", style="cyan", no_wrap=True)
-    table.add_column("Username", style="magenta")
+
+    table = Table(title="🏆 High Scores", header_style="bold magenta")
+    table.add_column("Rank", justify="right")
+    table.add_column("Username", style="cyan")
     table.add_column("Score", justify="right", style="green")
 
-    sorted_scores = sorted(high_scores, key=lambda x: int(x[1]), reverse=True)
-    for i, score in enumerate(sorted_scores):
-        table.add_row(str(i+1), score[0], score[1])
+    for i, (name, score) in enumerate(high_scores, 1):
+        table.add_row(str(i), name, score)
 
     console.print(table)
 
 def update_high_scores(high_scores, username, score):
-    user_scores = [s for s in high_scores if s[0] == username]
+    user_scores = [entry for entry in high_scores if entry[0] == username]
     if user_scores:
-        if int(user_scores[0][1]) < score:
+        existing_score = int(user_scores[0][1])
+        if score > existing_score:
             high_scores.remove(user_scores[0])
             high_scores.append([username, str(score)])
     else:
         high_scores.append([username, str(score)])
-    sorted_scores = sorted(high_scores, key=lambda x: int(x[1]), reverse=True)
-    with open('high_scores.csv', 'w', newline='') as f:
+
+    # Sort by score (descending), preserve insertion order for ties
+    sorted_scores = sorted(high_scores, key=lambda x: -int(x[1]))
+
+    # change this number to keep more or less top scores
+    top_five = sorted_scores[:5]
+
+    with open('high_scores.csv', 'w', encoding='utf-8', newline='') as f:
         writer = csv.writer(f)
-        writer.writerows(sorted_scores)
+        writer.writerows(top_five)
+    
+    return top_five
+
 
 def main():
     questions = load_questions('questions.json')
@@ -134,7 +160,7 @@ def main():
                 category_choice = int(Prompt.ask("Enter the number of your chosen category")) - 1
                 if 0 <= category_choice < len(categories):
                     score = play_round(questions, categories[category_choice])
-                    update_high_scores(high_scores, username, score)
+                    high_scores = update_high_scores(high_scores, username, score)
                 else:
                     console.print("[red]Invalid category choice. Please try again.[/red]")
             except ValueError:
