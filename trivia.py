@@ -20,34 +20,35 @@ def load_questions(filename):
         console.print("[bold red]Error: Invalid JSON format.[/bold red]")
         return []
 
-def load_high_scores(filename):
+def sanitize_username(username):
+    return username.strip()
+
+def sanitize_score(score_input):
     try:
-        with open(filename, 'r', encoding='utf-8', newline='') as f:
+        score = int(str(score_input).strip())
+        return str(score)
+    except (ValueError, AttributeError):
+        return None
+
+def load_high_scores(filename):
+    valid_scores = []
+    try:
+        with open(filename, 'r', encoding='utf-8') as f:
             reader = csv.reader(f)
-            high_scores = list(reader)
-
-            # Sort by score descending, preserve insertion order for ties
-            sorted_scores = sorted(high_scores, key=lambda x: -int(x[1]))
-
-            # Keep only top 5
-            top_five = sorted_scores[:5]
-
-        # Optional: clean up the file to reflect valid state
-        with open(filename, 'w', encoding='utf-8', newline='') as f:
-            writer = csv.writer(f)
-            writer.writerows(top_five)
-
-        return top_five
-
+            for row in reader:
+                if len(row) != 2:
+                    continue  # Skip malformed rows
+                username = sanitize_username(row[0])
+                score = sanitize_score(row[1])
+                if score is not None:
+                    valid_scores.append([username, score])
     except FileNotFoundError:
         with open(filename, 'w', encoding='utf-8') as f:
-            pass
-        return []
-
-    except (csv.Error, ValueError, IndexError):
+            pass  # Create the file if it doesn't exist
+    except csv.Error:
         print("Error: Invalid high scores file format.")
-        return []
 
+    return valid_scores
 
 def get_category_questions(questions, category):
     return [q for q in questions if q['category'] == category]
@@ -79,7 +80,6 @@ def ask_question(question, index, total):
         console.print(f"[bold red]✘ Sorry, the correct answer was: [yellow]{question['correct']}[/yellow][/bold red]\n")
     return correct
 
-
 def play_round(questions, category):
     category_questions = get_category_questions(questions, category)
     if not category_questions:
@@ -107,32 +107,32 @@ def view_stats(high_scores):
     table.add_column("Score", justify="right", style="green")
 
     for i, (name, score) in enumerate(high_scores, 1):
-        table.add_row(str(i), name, score)
+        table.add_row(str(i), sanitize_username(name), sanitize_score(score))
 
     console.print(table)
 
-def update_high_scores(high_scores, username, score):
-    user_scores = [entry for entry in high_scores if entry[0] == username]
-    if user_scores:
-        existing_score = int(user_scores[0][1])
+def update_high_scores(high_scores, username, score, filename='high_scores.csv'):
+    # Check if user already has a score
+    existing = [entry for entry in high_scores if entry[0] == username]
+    if existing:
+        existing_score = existing[0][1]
         if score > existing_score:
-            high_scores.remove(user_scores[0])
-            high_scores.append([username, str(score)])
+            high_scores.remove(existing[0])
+            high_scores.append([username, score])
     else:
-        high_scores.append([username, str(score)])
+        high_scores.append([username, score])
 
-    # Sort by score (descending), preserve insertion order for ties
-    sorted_scores = sorted(high_scores, key=lambda x: -int(x[1]))
-
-    # change this number to keep more or less top scores
+    # Sort descending, keep top 5
+    sorted_scores = sorted(high_scores, key=lambda x: -x[1])
     top_five = sorted_scores[:5]
 
-    with open('high_scores.csv', 'w', encoding='utf-8', newline='') as f:
+    # Write top 5 back to file
+    with open(filename, 'w', encoding='utf-8', newline='') as f:
         writer = csv.writer(f)
-        writer.writerows(top_five)
-    
-    return top_five
+        for row in top_five:
+            writer.writerow(row)
 
+    return top_five
 
 def main():
     questions = load_questions('questions.json')
@@ -142,7 +142,7 @@ def main():
     categories = list(set(q['category'] for q in questions))
 
     console.print(Panel.fit("🎉 Welcome to the [bold cyan]Trivia Game[/bold cyan]! 🎉", style="bold white on blue"))
-    username = Prompt.ask("Enter your username")
+    username = sanitize_username(Prompt.ask("Enter your username"))
 
     while True:
         console.print("\n[bold]Main Menu[/bold]")
@@ -174,4 +174,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
