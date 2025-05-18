@@ -123,7 +123,7 @@ def update_high_scores(high_scores, username, score, filename='high_scores.csv')
         high_scores.append([username, score])
 
     # Sort descending, keep top 5
-    sorted_scores = sorted(high_scores, key=lambda x: -x[1])
+    sorted_scores = sorted(high_scores, key=lambda x: -int(x[1]))
     top_five = sorted_scores[:5]
 
     # Write top 5 back to file
