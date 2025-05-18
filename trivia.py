@@ -176,7 +176,7 @@ def main():
         if choice == '1':
             console.print("\n[bold]Available Categories:[/bold]")
             for i, category in enumerate(categories):
-                console.print(f"[cyan]{i+1}.[/cyan] {category}")
+                console.print(f"[cyan]{i+1}.[/cyan] {category.title()}")
             try:
                 category_choice = int(Prompt.ask("Enter the number of your chosen category")) - 1
                 if 0 <= category_choice < len(categories):
