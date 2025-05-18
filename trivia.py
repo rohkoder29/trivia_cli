@@ -1,12 +1,29 @@
 import json
 import csv
 import random
+from pathlib import Path
 from rich.console import Console
 from rich.prompt import Prompt
 from rich.table import Table
 from rich.panel import Panel
 
 console = Console()
+
+def load_config(filepath="config.json"):
+    default_config = {
+        "num_questions": 5,
+        "points_per_correct_answer": 3,
+        "top_high_scores": 5,
+    }
+    config_path = Path(filepath)
+    if config_path.is_file():
+        try:
+            with open(config_path, "r", encoding="utf-8") as f:
+                user_config = json.load(f)
+            return {**default_config, **user_config}
+        except (json.JSONDecodeError, TypeError):
+            pass  # fall back to default if corrupted
+    return default_config
 
 def load_questions(filename):
     try:
@@ -85,13 +102,13 @@ def play_round(questions, category):
     if not category_questions:
         console.print("[red]No questions available for this category.[/red]")
         return 0
-    selected_questions = random.sample(category_questions, min(5, len(category_questions)))
+    selected_questions = random.sample(category_questions, min(NUM_QUESTIONS, len(category_questions)))
     score = 0
     correct_answers = 0
     for idx, question in enumerate(selected_questions, 1):
         if ask_question(question, idx, len(selected_questions)):
             correct_answers += 1
-            score += 3
+            score += POINTS_PER_CORRECT_ANSWER
     console.print(f"\n[bold green]✔ You got {correct_answers} out of {len(selected_questions)} correct![/bold green]")
     console.print(f"[bold cyan]⭐ Total Score: {score} points[/bold cyan]")
     return score
@@ -124,15 +141,15 @@ def update_high_scores(high_scores, username, score, filename='high_scores.csv')
 
     # Sort descending, keep top 5
     sorted_scores = sorted(high_scores, key=lambda x: -int(x[1]))
-    top_five = sorted_scores[:5]
+    top_high_scores = sorted_scores[:TOP_HIGH_SCORES]
 
     # Write top 5 back to file
     with open(filename, 'w', encoding='utf-8', newline='') as f:
         writer = csv.writer(f)
-        for row in top_five:
+        for row in top_high_scores:
             writer.writerow(row)
 
-    return top_five
+    return top_high_scores
 
 def main():
     questions = load_questions('questions.json')
@@ -173,4 +190,8 @@ def main():
             break
 
 if __name__ == '__main__':
+    CONFIG = load_config()
+    NUM_QUESTIONS = CONFIG.get("num_questions", 5)
+    POINTS_PER_CORRECT_ANSWER = CONFIG.get("points_per_correct_answer", 3)
+    TOP_HIGH_SCORES = CONFIG.get("top_high_scores", 5)
     main()
