@@ -18,6 +18,7 @@ Improve the command-line user experience with a clean and modern UI using the `r
 ### Notes
 - Foundation laid for future enhancements like progress bars and animations
 
+
 ## [2.1.0] - 2025-05-16
 ### Added
 - Username input is now sanitized both on entry and display (e.g., trims spaces).
@@ -32,3 +33,14 @@ Improve the command-line user experience with a clean and modern UI using the `r
 ### Fixed
 - Bug where incorrect high score rows would result in an empty leaderboard.
 - Prevented accidental overwrites of valid scores when bad entries are present.
+
+
+## [2.2.0] - YYYY-MM-DD
+
+### Changed
+- Replaced hardcoded game configuration values with a dynamic `config.json` file.
+- Introduced `load_config()` with default fallbacks for missing keys or file.
+- Added accessor helper functions to simplify config usage and improve readability.
+
+### Notes
+- This change makes it easier for others to fork or configure the game without modifying the Python code directly.
