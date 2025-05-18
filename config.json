@@ -1,5 +1,7 @@
 {
-  "num_questions": 5,
-  "points_per_correct_answer": 3,
-  "top_high_scores": 5
+    "questions_file": "questions.json",
+    "high_scores_file": "high_scores.csv",
+    "num_questions": 5,
+    "points_per_correct_answer": 3,
+    "top_high_scores": 5
 }

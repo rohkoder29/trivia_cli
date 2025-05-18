@@ -9,21 +9,23 @@ from rich.panel import Panel
 
 console = Console()
 
-def load_config(filepath="config.json"):
+def load_config():
     default_config = {
+        "questions_file": "questions.json",
+        "high_scores_file": "high_scores.txt",
         "num_questions": 5,
         "points_per_correct_answer": 3,
         "top_high_scores": 5,
     }
-    config_path = Path(filepath)
-    if config_path.is_file():
-        try:
-            with open(config_path, "r", encoding="utf-8") as f:
-                user_config = json.load(f)
-            return {**default_config, **user_config}
-        except (json.JSONDecodeError, TypeError):
-            pass  # fall back to default if corrupted
-    return default_config
+    try:
+        with open("config.json", "r", encoding="utf-8") as f:
+            config = json.load(f)
+    except FileNotFoundError:
+        config = {}
+    # Merge with defaults (missing keys filled in)
+    for k, v in default_config.items():
+        config.setdefault(k, v)
+    return config
 
 def load_questions(filename):
     try:
@@ -151,12 +153,14 @@ def update_high_scores(high_scores, username, score, filename='high_scores.csv')
 
     return top_high_scores
 
+
 def main():
-    questions = load_questions('questions.json')
+    questions = load_questions(QUESTIONS_FILE)
     if not questions:
         return
-    high_scores = load_high_scores('high_scores.csv')
-    categories = list(set(q['category'] for q in questions))
+
+    high_scores = load_high_scores(HIGH_SCORES_FILE)
+    categories = sorted(set(q['category'] for q in questions))
 
     console.print(Panel.fit("🎉 Welcome to the [bold cyan]Trivia Game[/bold cyan]! 🎉", style="bold white on blue"))
     username = sanitize_username(Prompt.ask("Enter your username"))
@@ -189,9 +193,12 @@ def main():
             console.print("\n[bold green]Thanks for playing! Goodbye! 👋[/bold green]")
             break
 
+
 if __name__ == '__main__':
     CONFIG = load_config()
+    QUESTIONS_FILE = CONFIG.get("questions_file", "questions.json")
     NUM_QUESTIONS = CONFIG.get("num_questions", 5)
     POINTS_PER_CORRECT_ANSWER = CONFIG.get("points_per_correct_answer", 3)
+    HIGH_SCORES_FILE = CONFIG.get("high_scores_file", "high_scores.csv")
     TOP_HIGH_SCORES = CONFIG.get("top_high_scores", 5)
     main()
