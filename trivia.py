@@ -177,7 +177,7 @@ def main():
                 category_choice = int(Prompt.ask("Enter the number of your chosen category")) - 1
                 if 0 <= category_choice < len(categories):
                     score = play_round(questions, categories[category_choice])
-                    high_scores = update_high_scores(high_scores, username, score)
+                    high_scores = update_high_scores(high_scores, username, str(score))
                 else:
                     console.print("[red]Invalid category choice. Please try again.[/red]")
             except ValueError:
