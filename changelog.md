@@ -19,7 +19,7 @@ Improve the command-line user experience with a clean and modern UI using the `r
 - Foundation laid for future enhancements like progress bars and animations
 
 
-## [2.1.0] - 2025-05-16
+## [2.1.0] - 2025-05-17
 ### Added
 - Username input is now sanitized both on entry and display (e.g., trims spaces).
 - High scores are now validated before use (e.g., format, number of fields, score value).
@@ -35,7 +35,7 @@ Improve the command-line user experience with a clean and modern UI using the `r
 - Prevented accidental overwrites of valid scores when bad entries are present.
 
 
-## [2.2.0] - YYYY-MM-DD
+## [2.2.0] - 2025-05-18
 
 ### Changed
 - Replaced hardcoded game configuration values with a dynamic `config.json` file.
