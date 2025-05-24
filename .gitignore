@@ -13,6 +13,8 @@ venv/
 # Ignore some other files
 high_scores.csv
 notes.txt
+.ropeproject
+.zed/
 
 # Ignore system files
 .DS_Store
