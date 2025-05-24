@@ -1,7 +1,6 @@
 import json
 import csv
 import random
-from pathlib import Path
 from rich.console import Console
 from rich.prompt import Prompt
 from rich.table import Table
